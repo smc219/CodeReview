@@ -1,0 +1,45 @@
+{
+// tasks.json 형식에 대한 설명서는 
+    // https://go.microsoft.com/fwlink/?LinkId=733558의 내용을 참조하세요.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "gcc build active file",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "execute",
+            "command": "${fileDirname}/${fileBasenameNoExtension}.out < in.txt",
+            "group": {
+                "kind": "test",
+                "isDefault": true,
+            }
+        }
+    ]
+}
